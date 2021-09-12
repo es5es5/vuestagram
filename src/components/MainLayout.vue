@@ -3,6 +3,11 @@
     <Header />
     <h1 class="heading">𝙇𝙤𝙪𝙞𝙨𝙩𝙖𝙜𝙧𝙖𝙢</h1>
     <div class="container">
+      <ul class="images">
+        <li v-for="(image, index) in images" :key="index">
+          <img :src="image.urls.small" :alt="image.alt_description" class="image" />
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -17,7 +22,6 @@ export default Vue.extend({
     return {
       images: datas,
       search: 'spring',
-      client_id: 'qPZTUxnvzIcggSG3yugWxx45eX4x5dqrJlnGoeCEMbs',
       items: [{
         width: 10,
         height: 10,
@@ -35,5 +39,11 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .heading {
   font-size: 40px;
+}
+
+.image {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
 }
 </style>

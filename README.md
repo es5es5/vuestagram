@@ -1,4 +1,4 @@
-# vueterest
+# vuestagram
 
 ## Project setup
 ```
