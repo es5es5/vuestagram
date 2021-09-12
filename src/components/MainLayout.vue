@@ -1,46 +1,47 @@
 <template>
   <div id="app">
     <Header />
-    <h1 class="heading">𝙇𝙤𝙪𝙞𝙨𝙩𝙖𝙜𝙧𝙖𝙢</h1>
-    <div class="container">
-      <ul class="images">
-        <li v-for="(image, index) in images" :key="index">
-          <img :src="image.urls.small" :alt="image.alt_description" class="image" />
-        </li>
-      </ul>
-    </div>
+    <ul class="images">
+      <li v-for="(image, index) in images" :key="index">
+        <img :src="image.urls.small" :alt="image.alt_description" class="image" />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Header from '@/components/Header.vue'
+import axios from 'axios'
 import datas from '@/assets/data/couples.json'
 
 export default Vue.extend({
   name: 'Main',
+  components: {
+    Header,
+  },
   data () {
     return {
       images: datas,
       search: 'spring',
-      items: [{
-        width: 10,
-        height: 10,
-      }, {
-        width: 10,
-        height: 10,
-      }]
+      client_id: 'qPZTUxnvzIcggSG3yugWxx45eX4x5dqrJlnGoeCEMbs',
     }
   },
   methods: {
+    searchUnsplash () {
+      this.images = []
+      axios.get(`https://api.unsplash.com/search/photos?client_id=${this.client_id}&query=${this.search}&per_page=30`, {
+      }).then(response => {
+        this.images = response.data.results
+      }).catch(() => {
+        this.images = []
+      })
+    }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-.heading {
-  font-size: 40px;
-}
-
 .image {
   display: inline-block;
   vertical-align: middle;
