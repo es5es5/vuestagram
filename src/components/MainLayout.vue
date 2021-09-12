@@ -1,6 +1,5 @@
 <template>
   <div>
-    Main
   </div>
 </template>
 
@@ -8,10 +7,22 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Main'
+  name: 'Main',
+  components: {
+  },
+  data () {
+    return {
+      items: [{
+        width: 10,
+        height: 10,
+      }, {
+        width: 10,
+        height: 10,
+      }]
+    }
+  }
 })
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
 </style>
