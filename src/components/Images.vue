@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import datas from '@/assets/data/couples.json'
+import datas from '@/assets/data/korean.json'
 import axios from 'axios'
 
 export default Vue.extend({
