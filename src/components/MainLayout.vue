@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="MainLayout">
     <Header />
     <Images />
   </div>
@@ -20,9 +20,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.image {
-  display: inline-block;
-  vertical-align: middle;
-  width: 100%;
+@media screen and (min-width: 750px) {
+  #MainLayout {
+    margin: 100px auto;
+    width: 375px;
+    max-height: 812px;
+    overflow-y: scroll;
+  }
 }
 </style>
