@@ -1,8 +1,16 @@
 <template>
   <ul class="images">
-    <li v-for="(image, index) in images" :key="index">
-      <img :src="image.urls.small" :alt="image.alt_description" class="image" />
-    </li>
+    <viewer
+      :options="{
+        keyboard: true,
+        title: false,
+      }"
+    >
+      <li v-for="(image, index) in images" :key="index">
+        <img :src="image.urls.small" :alt="image.alt_description" class="image" />
+        <p class="date">2021-05-05 12:12 (Tue)</p>
+      </li>
+    </viewer>
   </ul>
 </template>
 
@@ -35,9 +43,23 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.image {
-  display: inline-block;
-  vertical-align: middle;
-  width: 100%;
+.images {
+  li {
+    position: relative;
+  }
+
+  .image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  .date {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 11px;
+    color: #eee;
+  }
 }
 </style>
